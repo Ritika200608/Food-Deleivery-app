@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/restaurant_selection.css' %}">
+    <title>Restaurants</title>
+</head>
+<body>
+    <div class="restaurant-container">
+        <h1>Restaurants</h1>
+        <div class="restaurant-list">
+            {% for restaurant in restaurants %}
+                <div class="restaurant-card">
+                    <h2>{{ restaurant.name }}</h2>
+                    <p>{{ restaurant.description }}</p>
+                    <a href="{% url 'menu' restaurant.id %}" class="btn">View Menu</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

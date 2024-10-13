@@ -1,0 +1,45 @@
+/* order_success.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/Rooftop.jpg'); /* Replace with your background image filename */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.success-container {
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text visibility */
+    padding: 100px;
+    border-radius: 15px;
+    margin: 100px auto;
+    width: 400px; /* Set a width for the container */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

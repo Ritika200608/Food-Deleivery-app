@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <title>Your Cart</title>
+</head>
+<body>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <ul>
+            {% for item in items %}
+                <li>{{ item.name }} - ₹{{ item.price }}</li>
+            {% empty %}
+                <li>Your cart is empty.</li>
+            {% endfor %}
+        </ul>
+        
+        <!-- Display total amount -->
+        <p>Total Amount: ₹{{ total_amount }}</p>
+        
+        <!-- Form for placing the order -->
+        <form method="post" action="{% url 'place_order' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>

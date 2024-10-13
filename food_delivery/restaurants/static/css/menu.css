@@ -1,0 +1,82 @@
+/* menu.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background color for contrast */
+    background-image: url('../images/background.png'); /* Replace with your background image filename */
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    max-width: 1200px; /* Max width for the menu */
+    margin: 50px auto; /* Center the container */
+    padding: 20px;
+    background: #ffffff; /* White background for the menu */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Darker color for the heading */
+    margin-bottom: 30px;
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Spacing between menu items */
+}
+
+.menu-item {
+    background: #f9f9f9; /* Light background for menu items */
+    border: 1px solid #e0e0e0; /* Border for menu items */
+    border-radius: 8px; /* Rounded corners for menu items */
+    padding: 15px;
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.item-details {
+    margin-bottom: 15px; /* Space between description and price */
+}
+
+.item-description {
+    color: #777; /* Lighter color for description */
+    font-size: 0.9em; /* Smaller font for description */
+}
+
+.item-price {
+    font-weight: bold; /* Bold price */
+    color: #007bff; /* Bootstrap primary color */
+    font-size: 1.2em; /* Larger font for price */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: white;
+    background-color: #007bff; /* Primary color */
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Button transition */
+}
+
+.add-to-cart-btn:hover,
+.view-cart-btn:hover,
+.back-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.cart-button, .back-button {
+    text-align: center; /* Center align cart and back buttons */
+    margin-top: 20px; /* Space above buttons */
+}

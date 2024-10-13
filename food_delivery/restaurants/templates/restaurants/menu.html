@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <title>{{ restaurant.name }} Menu</title>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>{{ restaurant.name }} Menu</h1>
+        <div class="menu-items">
+            {% for item in menu_items %}
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h2>{{ item.name }}</h2>
+                        <p class="item-description">{{ item.description }}</p>
+                        <p class="item-price">₹{{ item.price }}</p>
+                    </div>
+                    <form method="post" action="{% url 'menu' restaurant.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button type="submit" class="btn add-to-cart-btn">Add to Cart</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="cart-button">
+            <a href="{% url 'cart' %}" class="btn view-cart-btn">View Cart</a>
+        </div>
+        <div class="back-button">
+            <a href="{% url 'restaurant_list' %}" class="btn back-btn">Back to Restaurants</a>
+        </div>
+    </div>
+</body>
+</html>

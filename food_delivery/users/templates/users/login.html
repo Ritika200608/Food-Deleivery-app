@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="POST" id="loginForm">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+                <input type="checkbox" id="showPassword"> Show Password
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popup for wrong password -->
+    <div id="errorPopup" class="error-popup" style="display: none;">
+        <p>Wrong username or password. Please try again.</p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <script>
+        // Show password functionality
+        $('#showPassword').change(function() {
+            const passwordField = $('#password');
+            if ($(this).is(':checked')) {
+                passwordField.attr('type', 'text');
+            } else {
+                passwordField.attr('type', 'password');
+            }
+        });
+
+        // Handle form submission
+        $('#loginForm').submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const formData = $(this).serialize(); // Get form data
+
+            $.post('{% url "login" %}', formData, function(response) {
+                if (response.success) {
+                    window.location.href = "{% url 'restaurant_list' %}"; // Redirect on success
+                } else {
+                    $('#errorPopup').show(); // Show popup on error
+                }
+            });
+        });
+
+        // Close popup
+        $('#closePopup').click(function() {
+            $('#errorPopup').hide();
+        });
+    </script>
+</body>
+</html>
